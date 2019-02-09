@@ -1,6 +1,8 @@
 FROM mhart/alpine-node:8.15
-COPY src/ /src
+COPY . .
 
+RUN yarn 
 
 EXPOSE 80
-CMD ["node", "src/index.js"]
+EXPOSE 8080
+CMD ["yarn", "start"]
