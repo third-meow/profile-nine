@@ -3,8 +3,8 @@
 	"version": "0.0.1",
 	"license": "MIT",
 	"scripts": {
-		"start": "babel-node src",
-		"test": "eslint src"
+		"start": "babel-node app/",
+		"test": "eslint app/"
 	},
 	"browserslist": [
 		"> 5%"
