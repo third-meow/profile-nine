@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"license": "MIT",
 	"scripts": {
-		"start": "babel-node app/",
+		"start": "babel-node app/server.js",
 		"test": "eslint app/"
 	},
 	"browserslist": [
