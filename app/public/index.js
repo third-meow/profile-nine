@@ -5,25 +5,24 @@
 new Vue({
   el: '#app',
   data: {
-    BTCprice: 'BTC price not yet loaded',
+    price: 'MSFT price not yet loaded',
   },
   mounted() {
-    this.FetchBTCPrice();
+    this.FetchMSFTPrice();
   },
   methods: {
-    FetchBTCPrice() {
-      this.$http.get('/api/stockprice/BTC')
+    FetchMSFTPrice() {
+      this.$http.get('/api/stockprice/MFST')
         .then(response => response.json())
         .then((result) => {
-          if (result.price === '') {
-            this.BTCprice = 'BTC price is unknown';
+          if (result['adjusted close'] === '') {
+            this.price = 'MFST price is unknown';
           } else {
-            this.BTCprice = result.price;
+            this.price = result['adjusted close'];
           }
         }).catch((err) => {
           console.log(err);
         });
-      // return 'BTC price is unavailable';
     },
   },
 
