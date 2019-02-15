@@ -10,10 +10,10 @@ const apiOps = {
   key: 'P6RK5JHD2J3MNT1H',
 };
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 
 app.get('/', (req, res) => {
-  res.sendHeader({ 'content-type': 'html' });
+  //res.sendHeader({ 'content-type': 'html' });
   res.sendFile('index.html');
 });
 

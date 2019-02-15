@@ -1,9 +1,12 @@
+<template>
+	<div class="AppPrice">
+		<h2>{{ price }}</h2>
+	</div>
+</template>
 
-/* eslint-disable no-new */
-/* eslint-disable no-undef */
-/* eslint-disable no-console */
-new Vue({
-  el: '#app',
+<script>
+export default {
+	name: 'AppPrice',
   data: {
     price: 'MSFT price not yet loaded',
   },
@@ -25,5 +28,26 @@ new Vue({
         });
     },
   },
+};
+</script>
 
-});
+<style>
+h1, h2 {
+	font-weight: normal;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+li {
+	display: inline-block;
+	margin: 0 10px;
+}
+
+a {
+	color: #35495E;
+}
+</style>
+
