@@ -22,16 +22,16 @@ app.get('/api/stockprice/:symb', (req, res) => {
 
   reqp(apiUrl)
     .then((response) => {
-			//parse into JSON
+      // parse into JSON
       const result = JSON.parse(response);
 
-			//get last refeshed date
+      // get last refeshed date
       const dateStr = result['Meta Data']['3. Last Refreshed'];
 
-			//get adjusted close on last refreshed
+      // get adjusted close on last refreshed
       const adjClose = result['Time Series (Daily)'][dateStr]['5. adjusted close'];
 
-			//send back the adjusted close
+      // send back the adjusted close
       res.send({ 'adjusted close': adjClose });
     })
     .catch((err) => {
