@@ -7,8 +7,10 @@
 <script>
 export default {
 	name: 'AppPrice',
-  data: {
-    price: 'MSFT price not yet loaded',
+  data: function () {
+		return {
+			price: 'MSFT price not yet loaded',
+		}
   },
   mounted() {
     this.FetchMSFTPrice();

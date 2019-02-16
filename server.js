@@ -10,11 +10,11 @@ const apiOps = {
   key: 'P6RK5JHD2J3MNT1H',
 };
 
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('/', (req, res) => {
-  //res.sendHeader({ 'content-type': 'html' });
-  res.sendFile('index.html');
+  // res.sendHeader({ 'content-type': 'html' });
+  res.sendFile('dist/index.html', { root: __dirname });
 });
 
 app.get('/api/stockprice/:symb', (req, res) => {

@@ -8,7 +8,8 @@
 </template>
 
 <script>
-import AppPrice from './components/AppPrice';
+import Vue from 'vue';
+import AppPrice from './components/AppPrice.vue';
 
 export default {
   name: 'app',
