@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import AppPrice from './components/AppPrice.vue';
 
 export default {

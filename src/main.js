@@ -8,9 +8,6 @@ Vue.use(VueResource);
 
 new Vue({
   el: '#app',
-  data: {
-    price: '',
-  },
   template: '<App/>',
   components: { App },
 });
