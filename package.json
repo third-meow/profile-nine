@@ -3,8 +3,9 @@
 	"version": "0.0.1",
 	"license": "MIT",
 	"scripts": {
-		"start": "babel-node app/server.js",
-		"test": "eslint app/"
+		"start": "node server.js",
+		"build": "poi src/main.js",
+		"test": "eslint src/"
 	},
 	"browserslist": [
 		"> 5%"
@@ -17,9 +18,15 @@
 		"eslint-plugin-compat": "^2.7.0",
 		"eslint-plugin-import": "^2.14.0",
 		"eslint-plugin-jsx-a11y": "^6.1.1",
-		"eslint-plugin-react": "^7.11.0"
+		"eslint-plugin-react": "^7.11.0",
+		"poi": "^12.5.5",
+		"vue-template-compiler": "^2.6.6"
 	},
 	"dependencies": {
-		"express": "^4.16.4"
+		"express": "^4.16.4",
+		"request": "^2.88.0",
+		"request-promise": "^4.2.2",
+		"vue": "^2.6.6",
+		"vue-resource": "^1.5.1"
 	}
 }

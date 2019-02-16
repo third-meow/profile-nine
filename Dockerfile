@@ -1,8 +1,9 @@
-FROM mhart/alpine-node:8.15
+FROM mhart/alpine-node:10.15
 COPY . .
 
-RUN yarn 
-
-EXPOSE 80
 EXPOSE 8080
+
+RUN yarn 
+RUN yarn build
+
 CMD ["yarn", "start"]
