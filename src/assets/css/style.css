@@ -10,11 +10,4 @@
 
 html {
 	min-height: 120%;
-
 }
-
-body {
-	background-image: linear-gradient(var(--main-bg-color), var(--main-text-color));
-}
-
-

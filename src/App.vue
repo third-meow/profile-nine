@@ -27,7 +27,7 @@ export default {
 
 body {
   margin: 0;
-	background-color: var(--main-bg-color);
+	background-image: linear-gradient(var(--main-bg-color), var(--main-text-color));
 }
 
 #app {
