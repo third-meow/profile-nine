@@ -5,6 +5,7 @@ import VueResource from 'vue-resource';
 import App from './App.vue';
 
 Vue.use(VueResource);
+Vue.config.devtools = true;
 
 new Vue({
   el: '#app',
