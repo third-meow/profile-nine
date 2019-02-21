@@ -9,19 +9,21 @@ export default {
 	name: 'AppPrice',
   data: function () {
 		return {
-			price: 'MSFT price not yet loaded',
+			price: 'loading..',
 		}
   },
   mounted() {
-    this.FetchMSFTPrice();
+    this.FetchPrice();
   },
   methods: {
-    FetchMSFTPrice() {
-      this.$http.get('/api/stockprice/MFST')
+    FetchPrice() {
+			let symb = window.location.pathname.split('/')[2];
+			console.log(symb);
+			this.$http.get(`/api/stockprice/${symb}`)
         .then(response => response.json())
         .then((result) => {
           if (result['adjusted close'] === '') {
-            this.price = 'MFST price is unknown';
+						this.price = `${symb} price is unknown`;
           } else {
             this.price = result['adjusted close'];
           }
@@ -34,22 +36,7 @@ export default {
 </script>
 
 <style>
-h1, h2 {
-	font-weight: normal;
-}
+color: var(--main-text-color);
 
-ul {
-	list-style-type: none;
-	padding: 0;
-}
-
-li {
-	display: inline-block;
-	margin: 0 10px;
-}
-
-a {
-	color: #35495E;
-}
 </style>
 
