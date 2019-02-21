@@ -5,7 +5,8 @@
 	"scripts": {
 		"start": "node server.js",
 		"build": "poi src/main.js",
-		"test": "eslint src/"
+		"test": "eslint src/",
+		"all" : "yarn test --fix &&  yarn build && yarn start"
 	},
 	"browserslist": [
 		"> 5%"
