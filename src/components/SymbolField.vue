@@ -1,6 +1,6 @@
 <template>
 	<div class="SymbolField">
-		<input v-model="symb" placeholder="Enter stock symbol">
+		<input v-model="symb" placeholder="Enter stock symbol"></input>
 	</div>
 </template>
 

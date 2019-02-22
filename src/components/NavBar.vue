@@ -4,7 +4,7 @@
 			<ul>
 				<li>Profile Nine</li>
 				<li>
-					<a href="https://github.com/third-meow/profile-nine"><img src="../assets/GitHub-Mark-32px.png"></a>
+					<a href="https://github.com/third-meow/profile-nine"><img src="../assets/GitHub-Mark-32px.png"></img></a>
 				</li>
 			</ul>
 		</nav>
