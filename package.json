@@ -5,7 +5,7 @@
 	"scripts": {
 		"start": "node server.js",
 		"build": "poi src/main.js",
-		"test": "eslint src/",
+		"test": "eslint src/ server.js",
 		"all": "yarn test --fix &&  yarn build && yarn start"
 	},
 	"browserslist": [
