@@ -12,7 +12,7 @@ const apiOps = {
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.get('/price/:symb', (req, res) => {
+app.get('/price', (req, res) => {
   res.sendFile('dist/index.html', { root: __dirname });
 });
 
