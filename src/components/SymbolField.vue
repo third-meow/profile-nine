@@ -1,6 +1,7 @@
 <template>
 	<div class="SymbolField">
 		<input v-model="symb" placeholder="Enter stock symbol"></input>
+		<button v-on:click="go">Go</button>
 	</div>
 </template>
 
@@ -13,6 +14,9 @@ export default {
 		}
   },
   methods: {
+		go: function () {
+			window.location.href = `/price?symb=${this.symb}`;
+		}
   },
 };
 </script>
