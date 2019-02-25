@@ -22,13 +22,11 @@ export default {
 
 <style>
 @import '../assets/css/style.css';
-@import '../assets/css/nes.min.css';
 
-
-body {
+/*body {
   margin: 0;
 	background-image: linear-gradient(var(--main-bg-color), var(--main-text-color));
-}
+}*/
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
