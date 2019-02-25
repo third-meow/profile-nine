@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const express = require('express');
+const favicon = require('serve-favicon');
 const path = require('path');
 const reqp = require('request-promise');
 
@@ -11,6 +12,9 @@ const apiOps = {
 };
 
 app.use(express.static(path.join(__dirname, 'dist')));
+
+app.use(favicon(path.join(__dirname, 'src', 'assets', 'favicon.ico')));
+
 
 app.get('/price', (req, res) => {
   res.sendFile('dist/index.html', { root: __dirname });
