@@ -1,7 +1,7 @@
 <template>
 	<div class="SymbolField">
 		<input v-model="symb" placeholder="Enter stock symbol"></input>
-		<button v-on:click="go">Go</button>
+		<button class="button" v-on:click="go">Go</button>
 	</div>
 </template>
 
