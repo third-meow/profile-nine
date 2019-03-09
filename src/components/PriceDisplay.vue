@@ -1,10 +1,13 @@
 <template>
-	<div class="AppPrice">
+	<div class="PriceDisplay">
 		<h2>{{ price }}</h2>
+		<canvas id="priceOverTime"></canvas>
 	</div>
 </template>
 
 <script>
+import Chart from 'chart.js'
+
 export default {
 	name: 'PriceDisplay',
   data: function () {
@@ -15,8 +18,20 @@ export default {
   },
   mounted() {
     this.FetchPrice();
+		this.DisplayGraph();
   },
   methods: {
+		DisplayGraph() {
+			new Chart(document.getElementById("priceOverTime"), {
+				type: 'line',
+				data: {
+					labels: [2012, 2013, 2014],
+					datasets: [{
+						data: [4, 5, 2],
+					}]
+				}
+			});
+		},
     FetchPrice() {
 			let uri = window.location.href.split('?');
 			if (uri.length < 2) {
