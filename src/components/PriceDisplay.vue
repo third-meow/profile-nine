@@ -75,7 +75,11 @@ export default {
 </script>
 
 <style>
-color: var(--main-text-color);
+
+.price-chart {
+	display: inline-block;
+	width: 80%;
+}
 
 </style>
 
