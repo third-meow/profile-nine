@@ -46,4 +46,28 @@ app.get('/api/stockprice/:symb', (req, res) => {
     });
 });
 
+app.get('/api/historic_prices/:symb', (req, res) => {
+  const apiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${req.params.symb}&apikey=${apiOps.key}`;
+
+  reqp(apiUrl)
+    .then((response) => {
+      // parse into JSON
+      const result = JSON.parse(response);
+
+      // get the actual data
+      const timeSeries = result['Time Series (Daily)'];
+
+      // extract adjusted close data from each day
+      const priceOverTime = [];
+      Object.keys(timeSeries).forEach((date) => {
+        priceOverTime.push([date, Number(timeSeries[date]['5. adjusted close'])]);
+      });
+
+      res.send(priceOverTime);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 app.listen(port, () => console.log(`Profile Nine is running. Vist localhost:${port}`));

@@ -1,10 +1,11 @@
 <template>
 	<div class="PriceDisplay">
 		<h2>{{ price }}</h2>
-		<canvas id="priceOverTime"></canvas>
+		<div class="price-chart">
+			<canvas id="priceOverTime"></canvas>
+		</div>
 	</div>
 </template>
-
 <script>
 import Chart from 'chart.js'
 
@@ -14,6 +15,7 @@ export default {
 		return {
 			symb: '',
 			price: 'loading..',
+			historicPrices: []
 		}
   },
   mounted() {
@@ -25,9 +27,9 @@ export default {
 			new Chart(document.getElementById("priceOverTime"), {
 				type: 'line',
 				data: {
-					labels: [2012, 2013, 2014],
+					labels: this.historicPrices.map(x => x[0]),
 					datasets: [{
-						data: [4, 5, 2],
+						data: this.historicPrices.map(x => x[1]),
 					}]
 				}
 			});
@@ -54,6 +56,15 @@ export default {
 						} else {
 							this.price = result['adjusted close'];
 						}
+					}).catch((err) => {
+						console.log(err);
+					});
+
+				this.$http.get(`/api/historic_prices/${this.symb}`)
+					.then(response => response.json())
+					.then((result) => {
+						this.historicPrices = result.sort();
+						this.DisplayGraph();
 					}).catch((err) => {
 						console.log(err);
 					});
