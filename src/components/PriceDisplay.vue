@@ -1,13 +1,11 @@
 <template>
 	<div class="PriceDisplay">
 		<h2>{{ price }}</h2>
-		<div class="price-chart">
-			<canvas id="priceOverTime"></canvas>
-		</div>
+		<PriceChart :chart-data="historicPrices"></PriceChart>
 	</div>
 </template>
 <script>
-import Chart from 'chart.js'
+import PriceChart from '../components/PriceChart.vue'
 
 export default {
 	name: 'PriceDisplay',
@@ -15,25 +13,16 @@ export default {
 		return {
 			symb: '',
 			price: 'loading..',
-			historicPrices: []
+			historicPrices: {}
 		}
   },
+	components: {
+		PriceChart,
+	},
   mounted() {
     this.FetchPrice();
-		this.DisplayGraph();
   },
   methods: {
-		DisplayGraph() {
-			new Chart(document.getElementById("priceOverTime"), {
-				type: 'line',
-				data: {
-					labels: this.historicPrices.map(x => x[0]),
-					datasets: [{
-						data: this.historicPrices.map(x => x[1]),
-					}]
-				}
-			});
-		},
     FetchPrice() {
 			let uri = window.location.href.split('?');
 			if (uri.length < 2) {
@@ -63,8 +52,15 @@ export default {
 				this.$http.get(`/api/historic_prices/${this.symb}`)
 					.then(response => response.json())
 					.then((result) => {
-						this.historicPrices = result.sort();
-						this.DisplayGraph();
+						result.sort()
+
+						this.historicPrices = {
+							labels: result.map(x => x[0]),
+							datasets: [{
+								data: result.map(x => x[1]),
+							}],
+						};
+
 					}).catch((err) => {
 						console.log(err);
 					});
