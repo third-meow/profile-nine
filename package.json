@@ -5,14 +5,15 @@
 	"scripts": {
 		"start": "node server.js",
 		"build": "poi src/main.js",
-		"test": "eslint src/"
+		"test": "eslint src/ server.js",
+		"all": "yarn test --fix &&  yarn build && yarn start"
 	},
 	"browserslist": [
 		"> 5%"
 	],
 	"devDependencies": {
-		"babel-cli": "^6.26.0",
-		"babel-preset-env": "^1.7.0",
+		"@babel/core": "^7.3.3",
+		"@babel/preset-env": "^7.3.1",
 		"eslint": "^4.19.1 || ^5.3.0",
 		"eslint-config-airbnb": "^17.1.0",
 		"eslint-plugin-compat": "^2.7.0",
@@ -23,10 +24,13 @@
 		"vue-template-compiler": "^2.6.6"
 	},
 	"dependencies": {
+		"chart.js": "^2.7.3",
 		"express": "^4.16.4",
 		"request": "^2.88.0",
 		"request-promise": "^4.2.2",
+		"serve-favicon": "^2.5.0",
 		"vue": "^2.6.6",
+		"vue-chartjs": "^3.4.0",
 		"vue-resource": "^1.5.1"
 	}
 }

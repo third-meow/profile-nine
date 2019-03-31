@@ -1,0 +1,13 @@
+
+:root {
+	--main-bg-color: #fbf5ff;
+	--main-offwhite: #b5c2b7;
+	--main-text-color: #131515;
+	--main-contrast-color: #840032;
+	--main-dblue: #1d263b;
+	--main-lblue: #5c6784;
+}
+
+html {
+	min-height: 120%;
+}

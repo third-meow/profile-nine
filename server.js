@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const express = require('express');
+const favicon = require('serve-favicon');
 const path = require('path');
 const reqp = require('request-promise');
 
@@ -12,8 +13,14 @@ const apiOps = {
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
+app.use(favicon(path.join(__dirname, 'src', 'assets', 'favicon.ico')));
+
+
+app.get('/price', (req, res) => {
+  res.sendFile('dist/index.html', { root: __dirname });
+});
+
 app.get('/', (req, res) => {
-  // res.sendHeader({ 'content-type': 'html' });
   res.sendFile('dist/index.html', { root: __dirname });
 });
 
@@ -33,6 +40,30 @@ app.get('/api/stockprice/:symb', (req, res) => {
 
       // send back the adjusted close
       res.send({ 'adjusted close': adjClose });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.get('/api/historic_prices/:symb', (req, res) => {
+  const apiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${req.params.symb}&apikey=${apiOps.key}`;
+
+  reqp(apiUrl)
+    .then((response) => {
+      // parse into JSON
+      const result = JSON.parse(response);
+
+      // get the actual data
+      const timeSeries = result['Time Series (Daily)'];
+
+      // extract adjusted close data from each day
+      const priceOverTime = [];
+      Object.keys(timeSeries).forEach((date) => {
+        priceOverTime.push([date, Number(timeSeries[date]['5. adjusted close'])]);
+      });
+
+      res.send(priceOverTime);
     })
     .catch((err) => {
       console.log(err);
