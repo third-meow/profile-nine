@@ -12,13 +12,6 @@ export default {
 				tooltips: {
 					enabled: true,
 					mode: 'single',
-					/*
-					callbacks: {
-						label: function(tooltipItems, data) {
-							return '$' + tooltipItems.yLabel;
-						}
-					}
-					*/
 				}
 			}
 		};
@@ -29,7 +22,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>
-

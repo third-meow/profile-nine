@@ -1,7 +1,9 @@
 <template>
 	<div class="PriceDisplay">
 		<h2>{{ price }}</h2>
-		<PriceChart :chart-data="historicPrices"></PriceChart>
+		<div id="price-chart">
+			<PriceChart :chart-data="historicPrices"></PriceChart>
+		</div>
 	</div>
 </template>
 <script>
@@ -72,9 +74,10 @@ export default {
 
 <style>
 
-.price-chart {
+#price-chart {
 	display: inline-block;
-	width: 80%;
+	width: 70%;
+	height: 30%;
 }
 
 </style>
