@@ -1,5 +1,5 @@
 <template>
-	<div class="SymbolField">
+	<div class="NavBar">
 		<nav>
 			<ul>
 				<li>Profile Nine</li>
@@ -19,7 +19,7 @@ export default {
 
 <style>
 
-ul {
+nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -27,7 +27,7 @@ ul {
   background-color: var(--main-offwhite);
 }
 
-li {
+nav li {
 	float: left;
   display: block;
   padding: 14px 16px;
@@ -35,17 +35,17 @@ li {
   color: var(--main-text-color);
 }
 
-li a img {
+nav li a img {
 	width: 75%;
 	height: 75%;
 }
 
-li:last-child {
+nav li:last-child {
 	float: right;
 }
 
 /* Change the link color on hover */
-li:hover {
+nav li:hover {
 	border-bottom: 2px var(--main-text-color);
 }
 
