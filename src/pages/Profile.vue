@@ -2,6 +2,7 @@
 	<div id="app">
 		<main>
 			<NavBar></NavBar>
+			<h2>{{ profileName }}</h2>
 			<Stocklist v-bind:stocks="stocks"></Stocklist>
 		</main>
 	</div>
@@ -19,7 +20,8 @@ export default {
   },
 	data: function () { 
 		return {
-			stocks: [{name:'nothing here', price:47}, {name: 'what am i doing with my life?', price:12}],
+			stocks: [],
+			profileName: "profile not set",
 		};
 	},
 	mounted() {
@@ -30,7 +32,7 @@ export default {
 		fetchStocks() {
 			let uri = window.location.href.split('?');
 			if (uri.length < 2) {
-				//to profile specifyed
+				//no profile specifyed
 			} else {
 				let uriKeyValPairs= uri[1].split('&');
 				uriKeyValPairs.forEach((keyValPair) => {
@@ -41,7 +43,7 @@ export default {
 				});
 
 				this.$http.get(`/api/profile/${this.profileName}`)
-					.then(response => reponse.json())
+					.then(response => response.json())
 					.then((result) => {
 						this.stocks = result.stocks;
 					}).catch((err) => {
