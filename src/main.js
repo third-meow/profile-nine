@@ -4,6 +4,7 @@ import Vue from 'vue/dist/vue';
 import VueResource from 'vue-resource';
 
 import Index from './pages/Index.vue';
+import Profile from './pages/Profile.vue';
 import Price from './pages/Price.vue';
 import PageNotFound from './pages/PageNotFound.vue';
 
@@ -14,6 +15,7 @@ Vue.config.devtools = true;
 const routes = {
   data: {
     '/': Index,
+    '/profile': Profile,
     '/price': Price,
   },
 
