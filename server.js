@@ -24,6 +24,23 @@ app.get('/', (req, res) => {
   res.sendFile('dist/index.html', { root: __dirname });
 });
 
+app.get('/profile', (req, res) => {
+  res.sendFile('dist/index.html', { root: __dirname });
+});
+
+app.get('/api/profile/:prfl', (req, res) => {
+  const testStock = {
+    name: 'A test stock',
+    price: 233,
+  };
+  const anotherTestStock = {
+    name: 'Another test stock',
+    price: 466,
+  };
+  res.send({ stocks: [testStock, anotherTestStock] });
+});
+
+
 app.get('/api/stockprice/:symb', (req, res) => {
   const apiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${req.params.symb}&apikey=${apiOps.key}`;
 
